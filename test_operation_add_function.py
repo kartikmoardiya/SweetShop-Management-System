@@ -1,10 +1,10 @@
 import unittest
-# from operations_function import SweetOperator
+from operations_function import SweetOperator
 
 class TestOperatorsAdd(unittest.TestCase):
     
-    # def setUp(self):
-    #     self.addOperator =  SweetOperator()
+    def setUp(self):
+        self.addOperator =  SweetOperator()
         
     def test_add_valid_sweet(self):
         result = self.addOperator.add_sweet(
