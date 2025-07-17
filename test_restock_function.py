@@ -36,5 +36,10 @@ class TestSweetRestock(unittest.TestCase):
         result = self.operator.restock_sweets("Rasgulla", 3)
         self.assertEqual(result, "Sweet Not Found")
 
+    def test_restock_no_sweets_available(self):
+        empty_operator = SweetOperator()
+        result = empty_operator.restock_sweets("Kaju Katli", 5)
+        self.assertEqual(result, "No Sweets Available")
+
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
