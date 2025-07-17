@@ -17,3 +17,12 @@ class TestSweetPurchase(unittest.TestCase):
         for sweet in sweets:
             if sweet.name == "Kaju Katli":
                 self.assertEqual(sweet.quantity, 7)
+    
+    def test_purchase_insufficient_stock(self):
+        result = self.operator.sweet_purchase("Kaju Katli", 20)
+        self.assertEqual(result, "Insufficient Stock")
+        # Stock should remain unchanged
+        sweets = self.operator.view_sweets()
+        for sweet in sweets:
+            if sweet.name == "Kaju Katli":
+                self.assertEqual(sweet.quantity, 10)
