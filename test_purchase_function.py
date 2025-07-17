@@ -34,3 +34,10 @@ class TestSweetPurchase(unittest.TestCase):
         for sweet in self.operator.view_sweets():
             if sweet.name == "Kaju Katli":
                 self.assertEqual(sweet.quantity, 10)
+
+    def test_purchase_sweet_not_found(self):
+        result = self.operator.sweet_purchase("Rasgulla", 2)
+        self.assertEqual(result, "Sweet Not Found")
+
+if __name__ == "__main__":
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
