@@ -34,5 +34,10 @@ class TestSweetShop(unittest.TestCase):
         result = self.shop.sweet_search("calories")
         self.assertEqual(result, "Invalid Sort Parameter")
         
+    def test_sort_param_case_and_whitespace(self):
+        result = self.shop.sweet_search("  nAme ")
+        expected = sorted(self.sweets, key=lambda s: s.name)
+        self.assertEqual(result, expected)
+        
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
