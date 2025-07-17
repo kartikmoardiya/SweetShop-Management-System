@@ -39,5 +39,10 @@ class TestSweetShop(unittest.TestCase):
         expected = sorted(self.sweets, key=lambda s: s.name)
         self.assertEqual(result, expected)
         
+    def test_empty_sweets_list(self):
+        self.shop.sweets = []
+        result = self.shop.sweet_search("name")
+        self.assertEqual(result, [])
+        
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
