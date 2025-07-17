@@ -90,3 +90,27 @@ class SweetOperator:
         
         return f"Purchase Successful. {quantity_to_purchase} {name}(s) purchased. Remaining stock: {sweet_found.quantity}"
     
+    def restock_sweets(self, name, quantity_to_restock):
+        # Check if sweets list is empty
+        if not self.sweets or len(self.sweets) == 0:
+            return "No Sweets Available"
+        
+        # Validate restock quantity
+        if quantity_to_restock <= 0:
+            return "Invalid Restock Quantity"
+        
+        # Find the sweet by name
+        sweet_found = None
+        for sweet in self.sweets:
+            if sweet.name.lower() == name.lower():
+                sweet_found = sweet
+                break
+        
+        # If sweet not found
+        if sweet_found is None:
+            return "Sweet Not Found"
+        
+        # Increase the quantity
+        sweet_found.quantity += quantity_to_restock
+        
+        return f"Restock Successful. {quantity_to_restock} {name}(s) restocked. Current stock: {sweet_found.quantity}"
