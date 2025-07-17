@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Shop Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-candy-cane"></i> Sweet Shop Management</h1>
+            <p>Manage your sweet inventory with ease</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="view">
+                <i class="fas fa-list"></i> View Sweets
+            </button>
+            <button class="tab-btn" data-tab="add">
+                <i class="fas fa-plus"></i> Add Sweet
+            </button>
+            <button class="tab-btn" data-tab="purchase">
+                <i class="fas fa-shopping-cart"></i> Purchase
+            </button>
+            <button class="tab-btn" data-tab="restock">
+                <i class="fas fa-boxes"></i> Restock
+            </button>
+        </nav>
+
+        <!-- View Sweets Tab -->
+        <div class="tab-content active" id="view-tab">
+            <div class="controls">
+                <div class="search-sort">
+                    <select id="sortSelect" class="form-select">
+                        <option value="name">Sort by Name</option>
+                        <option value="id">Sort by ID</option>
+                        <option value="category">Sort by Category</option>
+                        <option value="price">Sort by Price</option>
+                        <option value="quantity">Sort by Quantity</option>
+                    </select>
+                    <button id="sortBtn" class="btn btn-secondary">
+                        <i class="fas fa-sort"></i> Sort
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="sweets-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price ($)</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sweetsTableBody">
+                        <!-- Sweets will be populated here -->
+                    </tbody>
+                </table>
+                <div id="noSweetsMessage" class="no-data">
+                    <i class="fas fa-candy-cane"></i>
+                    <p>No sweets available. Add some sweets to get started!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Sweet Tab -->
+        <div class="tab-content" id="add-tab">
+            <div class="form-container">
+                <h2><i class="fas fa-plus-circle"></i> Add New Sweet</h2>
+                <form id="addSweetForm" class="sweet-form">
+                    <div class="form-group">
+                        <label for="sweetId">Sweet ID</label>
+                        <input type="number" id="sweetId" required min="1">
+                        <small class="form-help">Must be a unique positive number</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sweetName">Sweet Name</label>
+                        <input type="text" id="sweetName" required>
+                        <small class="form-help">Enter the name of the sweet</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sweetCategory">Category</label>
+                        <select id="sweetCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="chocolate">Chocolate</option>
+                            <option value="candy">Candy</option>
+                            <option value="pastry">Pastry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sweetPrice">Price ($)</label>
+                        <input type="number" id="sweetPrice" required min="0.01" step="0.01">
+                        <small class="form-help">Must be greater than 0</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sweetQuantity">Quantity</label>
+                        <input type="number" id="sweetQuantity" required min="0">
+                        <small class="form-help">Must be 0 or greater</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Sweet
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Purchase Tab -->
+        <div class="tab-content" id="purchase-tab">
+            <div class="form-container">
+                <h2><i class="fas fa-shopping-cart"></i> Purchase Sweet</h2>
+                <form id="purchaseForm" class="sweet-form">
+                    <div class="form-group">
+                        <label for="purchaseName">Sweet Name</label>
+                        <input type="text" id="purchaseName" required>
+                        <small class="form-help">Enter the exact name of the sweet</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purchaseQuantity">Quantity to Purchase</label>
+                        <input type="number" id="purchaseQuantity" required min="1" value="1">
+                        <small class="form-help">Must be greater than 0</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-shopping-cart"></i> Purchase
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Restock Tab -->
+        <div class="tab-content" id="restock-tab">
+            <div class="form-container">
+                <h2><i class="fas fa-boxes"></i> Restock Sweet</h2>
+                <form id="restockForm" class="sweet-form">
+                    <div class="form-group">
+                        <label for="restockName">Sweet Name</label>
+                        <input type="text" id="restockName" required>
+                        <small class="form-help">Enter the exact name of the sweet</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="restockQuantity">Quantity to Add</label>
+                        <input type="number" id="restockQuantity" required min="1">
+                        <small class="form-help">Must be greater than 0</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-boxes"></i> Restock
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Message Display -->
+        <div id="messageContainer" class="message-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
