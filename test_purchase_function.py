@@ -52,5 +52,10 @@ class TestSweetPurchase(unittest.TestCase):
             if sweet.name == "Gulab Jamun":
                 self.assertEqual(sweet.quantity, 5)
 
+    def test_purchase_name_case_insensitive(self):
+        # Try with different case
+        result = self.operator.sweet_purchase("kaju katli", 1)
+        self.assertIn("Purchase Successful", result)
+        
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
