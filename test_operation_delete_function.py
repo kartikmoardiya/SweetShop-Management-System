@@ -24,5 +24,10 @@ class TestOperatorsDelete(unittest.TestCase):
         self.assertEqual(result, "Invalid ID")
         self.assertEqual(len(self.deleteOperator.get_sweets()), 3)
         
+    def test_delete_non_existent_id(self):
+        result = self.deleteOperator.delete_sweets()
+        self.assertEqual(result, "Invalid ID")
+        self.assertEqual(len(self.deleteOperator.get_sweets()), 3)
+        
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
