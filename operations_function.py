@@ -51,8 +51,8 @@ class SweetOperator:
         
         return "Sweet Deleted Successfully"
 
-    # def view_sweets(self):
-    #     return list(self.sweets)
+    def view_sweets(self):
+        return list(self.sweets)
     
     def sweet_search(self, sort = "name"):
         sort = sort.strip().lower()

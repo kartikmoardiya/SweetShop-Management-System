@@ -9,3 +9,6 @@ class TestOperatorsView(unittest.TestCase):
     def test_view_empty_sweets(self):
         sweets = self.operator.view_sweets()
         self.assertEqual(sweets, [])   # Should be empty list when no sweets are added
+
+if __name__ == "__main__":
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
