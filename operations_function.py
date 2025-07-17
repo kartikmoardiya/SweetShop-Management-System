@@ -51,4 +51,12 @@ class SweetOperator:
         
         return "Sweet Deleted Successfully"
 
-            
+    def view_sweets(self):
+        return list(self.sweets)
+    
+    def sweet_search(self, sort = "name"):
+        sort = sort.strip().lower()
+        if sort not in ["id","name", "category", "price", "quantity"]:
+            return "Invalid Sort Parameter"
+        sorted_sweets = sorted(self.sweets, key=lambda x: getattr(x, sort))
+        return sorted_sweets
