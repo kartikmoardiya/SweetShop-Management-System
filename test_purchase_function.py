@@ -1,0 +1,19 @@
+import unittest
+from operations_function import SweetOperator
+
+class TestSweetPurchase(unittest.TestCase):
+
+    def setUp(self):
+        self.operator = SweetOperator()
+        # Add a few sweets for purchase tests
+        self.operator.add_sweet(1, "Kaju Katli", "chocolate", 50, 10)
+        self.operator.add_sweet(2, "Gulab Jamun", "candy", 40, 5)
+
+    def test_purchase_successful(self):
+        result = self.operator.sweet_purchase("Kaju Katli", 3)
+        self.assertEqual(result, "Purchase Successful. 3 Kaju Katli(s) purchased. Remaining stock: 7")
+        # Check that the quantity is updated correctly
+        sweets = self.operator.view_sweets()
+        for sweet in sweets:
+            if sweet.name == "Kaju Katli":
+                self.assertEqual(sweet.quantity, 7)
