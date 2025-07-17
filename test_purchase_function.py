@@ -26,3 +26,11 @@ class TestSweetPurchase(unittest.TestCase):
         for sweet in sweets:
             if sweet.name == "Kaju Katli":
                 self.assertEqual(sweet.quantity, 10)
+
+    def test_purchase_invalid_quantity(self):
+        result = self.operator.sweet_purchase("Kaju Katli", -5)
+        self.assertEqual(result, "Invalid Purchase Quantity")
+        # Quantity should remain unchanged
+        for sweet in self.operator.view_sweets():
+            if sweet.name == "Kaju Katli":
+                self.assertEqual(sweet.quantity, 10)
