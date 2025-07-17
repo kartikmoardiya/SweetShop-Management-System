@@ -307,7 +307,7 @@ function displaySweets(sweetsToDisplay = null) {
                     ${sweet.category}
                 </span>
             </td>
-            <td>$${sweet.price.toFixed(2)}</td>
+            <td>₹${sweet.price.toFixed(2)}</td>
             <td>${sweet.quantity}</td>
             <td>
                 <button class="btn btn-danger" onclick="deleteSweet(${sweet.id})">
