@@ -28,5 +28,12 @@ class TestOperatorsView(unittest.TestCase):
         self.assertEqual(sweets[0].price, 50)
         self.assertEqual(sweets[0].quantity, 10)
 
+    def test_view_sweets_does_not_modify_list(self):
+        self.operator.add_sweet(1, "Kaju Katli", "chocolate", 50, 10)
+        original = self.operator.view_sweets()
+        returned = self.operator.view_sweets()
+        self.assertIsNot(original, returned)  # Should be different list objects
+        self.assertEqual(original, returned)  # But same contents
+
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
