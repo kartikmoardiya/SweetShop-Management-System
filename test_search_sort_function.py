@@ -19,6 +19,12 @@ class TestSweetShop(unittest.TestCase):
         result = self.shop.sweet_search("name")
         expected = sorted(self.sweets, key=lambda s: s.name)
         self.assertEqual(result, expected)
+    
+    def test_sort_by_category(self):
+        result = self.shop.sweet_search("category")
+        expected = sorted(self.sweets, key=lambda s: s.category)
+        self.assertEqual(result, expected)
+        
         
 
 if __name__ == "__main__":
