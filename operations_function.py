@@ -41,4 +41,14 @@ class SweetOperator:
     # Function to get all sweets
     def get_sweets(self):
         return self.sweets
+    
+    # Delete function to remove a sweet by ID
+    # If ID does not exist, return "Invalid ID"
+    def delete_sweets(self, id = -1):
+        if not self.id_exists(id):
+            return "Invalid ID"
+        self.sweets = [sweet for sweet in self.sweets if sweet.id != id]
+        
+        return "Sweet Deleted Successfully"
+
             
