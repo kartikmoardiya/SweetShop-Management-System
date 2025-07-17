@@ -41,5 +41,13 @@ class TestSweetRestock(unittest.TestCase):
         result = empty_operator.restock_sweets("Kaju Katli", 5)
         self.assertEqual(result, "No Sweets Available")
 
+    def test_restock_name_case_insensitive(self):
+        result = self.operator.restock_sweets("kaju katli", 2)  # Lowercase
+        self.assertIn("Restock Successful", result)
+        for sweet in self.operator.view_sweets():
+            if sweet.name == "Kaju Katli":
+                self.assertEqual(sweet.quantity, 12)
+
+
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
