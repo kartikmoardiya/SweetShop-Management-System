@@ -60,3 +60,33 @@ class SweetOperator:
             return "Invalid Sort Parameter"
         sorted_sweets = sorted(self.sweets, key=lambda x: getattr(x, sort))
         return sorted_sweets
+    
+    def sweet_purchase(self, name, quantity_to_purchase = 1):
+        # Check if sweets list is empty
+        if not self.sweets or len(self.sweets) == 0:
+            return "No Sweets Available"
+        
+        # Validate quantity to purchase
+        if quantity_to_purchase <= 0:
+            return "Invalid Purchase Quantity"
+        
+        # Find the sweet by name
+        sweet_found = None
+        for sweet in self.sweets:
+            if sweet.name.lower() == name.lower():
+                sweet_found = sweet
+                break
+        
+        # If sweet not found
+        if sweet_found is None:
+            return "Sweet Not Found"
+        
+        # Check if enough stock is available
+        if sweet_found.quantity < quantity_to_purchase:
+            return "Insufficient Stock"
+        
+        # Decrease the quantity
+        sweet_found.quantity -= quantity_to_purchase
+        
+        return f"Purchase Successful. {quantity_to_purchase} {name}(s) purchased. Remaining stock: {sweet_found.quantity}"
+    
