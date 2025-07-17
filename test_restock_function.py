@@ -25,5 +25,12 @@ class TestSweetRestock(unittest.TestCase):
             if sweet.name == "Kaju Katli":
                 self.assertEqual(sweet.quantity, 10)   # Unchanged
 
+    def test_restock_zero_quantity(self):
+        result = self.operator.restock_sweets("Kaju Katli", 0)
+        self.assertEqual(result, "Invalid Restock Quantity")
+        for sweet in self.operator.view_sweets():
+            if sweet.name == "Kaju Katli":
+                self.assertEqual(sweet.quantity, 10)   # Unchanged
+
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
